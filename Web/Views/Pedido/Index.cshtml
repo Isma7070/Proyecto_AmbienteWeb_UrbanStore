@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Infraestructure.Models.Pedido>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    h1, h2, h3, h4, h5 {
+        color: orange;
+        margin-left: 5px;
+    }
+
+    th {
+        color: steelblue;
+    }
+
+    p {
+        margin-left: 5px;
+    }
+</style>
+
+<h2>Lista de pedidos</h2>
+
+
+<table class="table">
+    <thead>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonalEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estado)
+            </th>
+            <th>
+                Cliente 
+            </th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody id="resultado">
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idPedido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PersonalEntrega.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaEntrega)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Details", new { id=item.idPedido  }, new { @class = "fas fa-info" })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="col-md-4">
+    <div class="card my-4">
+        <h5 class="card-header">Buscar pedido por estado</h5>
+        @using (Ajax.BeginForm("FiltroEstado", "Pedido", new AjaxOptions
+        {
+            UpdateTargetId = "resultado",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET",
+            LoadingElementId = "ajaxLoader"
+        }))
+        {
+            <div class="card-body">
+                <div class="input-group">
+                    @Html.TextBox("id", "", new { @class = "form-control", @placeholder = "Estado del pedido" })
+
+                    <button type="submit" class="btn btn-default">Buscar</button>
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+@section Scripts 
+    {
+
+    @Scripts.Render("~/bundles/jqueryajax")
+
+    }

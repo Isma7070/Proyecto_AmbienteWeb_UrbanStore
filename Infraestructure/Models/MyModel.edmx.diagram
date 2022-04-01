@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0505ef2844aa42c19a929076e66c29fd" Name="Diagram1">
+        <EntityTypeShape EntityType="UrbanStoreModel.Categoria" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UrbanStoreModel.DetallePedido" Width="1.5" PointX="9.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UrbanStoreModel.Factura" Width="1.5" PointX="12.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UrbanStoreModel.Pedido" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UrbanStoreModel.PersonalEntrega" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UrbanStoreModel.Producto" Width="1.5" PointX="7.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UrbanStoreModel.TipoEntrega" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UrbanStoreModel.TipoPago" Width="1.5" PointX="10.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UrbanStoreModel.TipoUsuario" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UrbanStoreModel.TipoVehiculo" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UrbanStoreModel.Usuario" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UrbanStoreModel.Vehiculo" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="UrbanStoreModel.FK_DetallePedido" ManuallyRouted="false" />
+        <AssociationConnector Association="UrbanStoreModel.FK_DetallePedidoProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="UrbanStoreModel.Factura_TipoPago" ManuallyRouted="false" />
+        <AssociationConnector Association="UrbanStoreModel.FK_Factura_Pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="UrbanStoreModel.FK_Factura_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="UrbanStoreModel.FK_Pedido_Personal" ManuallyRouted="false" />
+        <AssociationConnector Association="UrbanStoreModel.FK_Pedido_TipoEntrega" ManuallyRouted="false" />
+        <AssociationConnector Association="UrbanStoreModel.PedidoUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="UrbanStoreModel.FK_Personal_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="UrbanStoreModel.Usuario_TipoUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="UrbanStoreModel.FK_Vehiculo_TipoVehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="UrbanStoreModel.CategoriaProducto" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

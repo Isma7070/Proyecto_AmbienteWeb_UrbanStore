@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+</head>
+<body style="width:100%">
+    @Html.Partial("_Menu")
+    <main>
+        <div>
+            @RenderBody()
+        </div>
+        @Html.Partial("_PiePagina")
+    </main>
+
+
+    @RenderSection("contact", false)
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/sweetalert")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

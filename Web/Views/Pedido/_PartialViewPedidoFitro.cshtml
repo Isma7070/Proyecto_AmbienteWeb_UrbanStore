@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Infraestructure.Models.Pedido>
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.idPedido)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.idPersonalAsignado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fechaEntrega)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.horarioEntrega)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { id = item.idPedido }) |
+        @Html.ActionLink("Detalle", "Details", new { id = item.idPedido }) |
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.idPedido })
+    </td>
+</tr>
+}
+

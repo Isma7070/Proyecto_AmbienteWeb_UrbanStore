@@ -1,0 +1,79 @@
+﻿ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Urban Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link" })
+            </li>
+            <li class="nav-item active">
+                @Html.ActionLink("Productos", "IndexProd", "Producto", null, new { @class = "nav-link" })
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mantenimientos</a>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("Productos", "IndexAdmin", "Producto", null, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Personal entrega", "Index", "PersonalEntrega", null, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Pedido", "Index", "Pedido", null, new { @class = "dropdown-item" })
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+            </li>
+            @* Detalle y link Orden *@
+            <li class="nav-item" id="cantidad">
+                @Html.Partial("_PedidoCantidad")
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Acerca de", "Acerca", "Home", null, new { @class = "nav-link" })
+            </li>
+            @{ string nombre = "";
+                string email = "Perfil";
+                Infraestructure.Models.Usuario oUsuario;
+                //Validar si existe en la sesión
+                if (Session["User"] != null)
+                {
+                    oUsuario = (Infraestructure.Models.Usuario)Session["User"];
+                    if (oUsuario != null)
+                    {
+                        nombre = $"{oUsuario.Nombre}";
+                        email = oUsuario.UsuarioID.ToString();
+                    }
+                }
+            }
+
+
+            <li class="nav-item dropdown ">
+                <a class=" btn btn-primary nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@nombre</a>
+
+                <div class="dropdown-menu">
+                    @if (Session["User"] != null)
+                    {
+                        <div class="dropdown-item">
+                            @* Nombre Usuario *@
+                            Usuario: @nombre - @email
+                        </div>
+                    }
+
+                    <div class="dropdown-divider"></div>
+                    @if (Session["User"] == null)
+                    {
+                        @Html.ActionLink("Login", "Index", "Login", null, new { @class = "dropdown-item" })
+                    }
+                    else
+                    {
+
+                        @Html.ActionLink("Logout", "Logout", "Login", null, new { @class = "dropdown-item " })
+                    }
+
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+    </div>
+</nav>

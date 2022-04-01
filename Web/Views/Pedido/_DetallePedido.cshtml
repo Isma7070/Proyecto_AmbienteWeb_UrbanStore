@@ -1,0 +1,83 @@
+﻿@model List<Web.ViewModel.ViewModelPedidoDetalle>
+
+<div class="table-responsive-sm">
+    @*Accion, nombre de controlador*@
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Producto
+            </th>
+            <th class="center">
+                Cantidad
+            </th>
+            <th class="right">
+                Precio
+            </th>
+
+            <th class="right">
+                SubTotal
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.HiddenFor(modelItem => item.Producto.ProductoID)
+                    @Html.DisplayFor(modelItem => item.Producto.Nombre)
+                </td>
+                <td class="center" style="width:1.5em">
+                    @Html.EditorFor(modelItem => item.cantidad, new { htmlAttributes = new { @class = "form-control changeCantidad", data_productoid = item.Producto.ProductoID, onchange = "updateCantidad(this)" } })
+                </td>
+                <td class="right">
+
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+
+                <td class="right">
+                    @Html.DisplayFor(modelItem => item.SubTotal)
+                </td>
+                <td>
+                    @Ajax.ActionLink("Eliminar",//Texto para el usuario
+                        "eliminarProducto",//Acción a llamar
+                        "Pedido",
+                        new
+                        {
+                            idProducto = item.idProducto
+                        },//Parámetros a enviar
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = "resultadoDetalle",
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "GET",
+                            OnComplete = "updateCantProducto()"
+                        }, new { @class = "btn btn-primary" }
+                        )
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div class="row">
+    <div class="col-lg-5 col-sm-5"></div>
+    <div class="col-lg-7 col-sm-5 ml-auto">
+        <table class="table table-clear">
+            <tbody>
+                <tr>
+                    <td class="left">
+                        <strong>Total</strong>
+                    </td>
+                    <td class="right">
+                        <strong>@(((decimal)Web.ViewModel.Carrito.Instancia.GetTotal()).ToString("C2"))</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

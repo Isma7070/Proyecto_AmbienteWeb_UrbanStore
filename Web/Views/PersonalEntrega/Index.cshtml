@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Infraestructure.Models.PersonalEntrega>
+
+@{ ViewBag.Title = "Gestión personal entrega"; }
+<style>
+    h1, h2, h3, h4, h5 {
+        color: orange;
+        margin-left: 5px;
+    }
+
+    th {
+        color: steelblue;
+    }
+
+    p {
+        margin-left: 5px;
+    }
+</style>
+
+<h2>Gestión personal entrega</h2>
+
+<p>
+    @Html.ActionLink(" ", "Create", null, new { @class = "fas fa-save" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PersonalID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vehiculoID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vehiculo.NumPlaca)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.PersonalID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.telefono)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.vehiculoID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Vehiculo.NumPlaca)
+    </td>
+    <td>
+        @Html.ActionLink(" ", "Edit", new { id = item.PersonalID }, new { @class = "far fa-edit" }) |
+        @Html.ActionLink(" ", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "fas fa-info" }) |
+        @Html.ActionLink(" ", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "far fa-trash-alt" })
+    </td>
+</tr>}
+
+</table>

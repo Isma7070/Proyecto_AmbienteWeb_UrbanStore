@@ -1,0 +1,13 @@
+﻿@{ int cantidad = Web.ViewModel.Carrito.Instancia.GetCountItems();}
+
+<a href="@Url.Action("PedidoCarrito", "Pedido")" class="nav-link">
+    Pedido <span class="badge badge-light">   @cantidad</span>
+</a>
+
+@if (@ViewBag.NotiCarrito != null)
+{
+    <script>
+            @Html.Raw(@ViewBag.NotiCarrito);
+    </script>
+}
+
